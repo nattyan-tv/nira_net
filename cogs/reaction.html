@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>nira-code: Reaction</title>
+    </head>
+    <body>
+        <h1>Reaction</h1>
+        <div>通常反応や追加反応の設定を行います。</div>
+        <hr color="#00aa00" size="5">
+        <h2>er add [トリガー] [リターン]</h2>
+        <div>
+            指定したトリガーのメッセージが送信された場合にリターンのメッセージを送信します。
+        </div>
+        <h4>[トリガー]</h4>
+        <div>
+            正規表現でチェックします。<br>
+            <a href="https://qiita.com/luohao0404/items/7135b2b96f9b0b196bf3">ここ</a>で詳細な正規表現の書き方を確認できます。
+        </div>
+        <h4>[リターン]</h4>
+        <div>
+            トリガーが送信されたときに返信するメッセージの内容を書きます。
+        </div>
+        <hr color="#000000">
+        <h2>er list</h2>
+        <div>
+            追加反応のリストを表示します。
+        </div>
+        <hr color="#000000">
+        <h2>er edit [トリガー] [リターン]</h2>
+        <div>
+            指定したトリガーのリターンを編集します。
+        </div>
+        <h4>[トリガー]</h4>
+        <div>
+            「er list」などで確認してください。
+        </div>
+        <h4>[リターン]</h4>
+        <div>
+            トリガーが送信されたときに返信するメッセージの内容を書きます。
+        </div>
+        <hr color="#000000">
+        <h2>er del</h2>
+        <div>
+            追加反応のリストを削除します。
+        </div>
+        <h2>nr [on/off]</h2>
+        <div>
+            チャンネルでの通常反応の有効/無効を設定できます。
+        </div>
+        <h4>[on/off]</h4>
+        <div>
+            有効にするか無効にするかです。
+        </div>
+        <h2>nr all [on/off]</h2>
+        <div>
+            サーバーでの通常反応の有効/無効を設定できます。
+        </div>
+        <h4>[on/off]</h4>
+        <div>
+            有効にするか無効にするかです。
+        </div>
+        <h4>チャンネル・サーバー設定の重複について</h4>
+        <div id="reaction_setting_cross">
+            <table border="1">
+                <tr><th>チャンネル設定</th><th>サーバー設定</th><th>そのチャンネルでの反応の有無</th></tr>
+                <tr><td>O</td><td>O</td><td>O</td></tr>
+                <tr><td>O</td><td>X</td><td>X</td></tr>
+                <tr><td>X</td><td>O</td><td>X</td></tr>
+                <tr><td>X</td><td>X</td><td>X</td></tr>
+            </table>
+        </div>
+        <h2>ar [on/off]</h2>
+        <div>
+            チャンネルでの通常反応及び追加反応の有効/無効を設定できます。
+        </div>
+        <h4>[on/off]</h4>
+        <div>
+            有効にするか無効にするかです。
+        </div>
+        <h2>nr all [on/off]</h2>
+        <div>
+            サーバーでの通常反応及び追加反応の有効/無効を設定できます。
+        </div>
+        <h4>[on/off]</h4>
+        <div>
+            有効にするか無効にするかです。
+        </div>
+        <h4><a href="#reaction_setting_cross">チャンネル・サーバー設定の重複について</a></h4>
+        <hr color="#00aa00" size="5">
+        <center><div id="copyright_in"></div></center>
+    </body>
+    <script src="base.js"></script>
+</html>

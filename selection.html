@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>にらBOT</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	</head>
+	<body>
+		<div id="selection_main">
+			<div><a href="javascript:frame_replace('amuse')">Amuse</a></div>
+			<div><a href="javascript:frame_replace('bump')">Bump</a></div>
+			<div><a href="javascript:frame_replace('check')">Check</a></div>
+			<div><a href="javascript:frame_replace('code')">Code</a></div>
+			<div><a href="javascript:frame_replace('debug')">Debug</a></div>
+			<div><a href="javascript:frame_replace('embed')">Embed</a></div>
+			<div><a href="javascript:frame_replace('get_reaction')">Get reaction</a></div>
+			<div><a href="javascript:frame_replace('info')">Info</a></div>
+			<div><a href="javascript:frame_replace('music')">Music</a></div>
+			<div><a href="javascript:frame_replace('normal_reaction')">Normal reaction</a></div>
+			<div><a href="javascript:frame_replace('on_error')">On error</a></div>
+			<div><a href="javascript:frame_replace('ping')">Ping</a></div>
+			<div><a href="javascript:frame_replace('reaction')">Reaction</a></div>
+			<div><a href="javascript:frame_replace('server_status')">Server status</a></div>
+			<div><a href="javascript:frame_replace('siritori')">Siritori</a></div>
+			<div><a href="javascript:frame_replace('test')">Test</a></div>
+			<div><a href="javascript:frame_replace('user_join')">User join</a></div>
+			<div><a href="javascript:frame_replace('User')">User</a></div>
+		</div>
+		<script>
+			function frame_replace(name){
+				window.parent.document.getElementById('main_frame').contentWindow.location.replace("cogs/" + name + ".html");
+			}
+		</script>
+	</body>
+</html>
