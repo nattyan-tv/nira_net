@@ -1,0 +1,182 @@
+#header{
+    position: relative;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 5vh;
+    background: linear-gradient(#14e202, #00a36d);
+    color: #ffffff;
+    text-align: center;
+    font-family: "Play";
+    font-size: 3vh;
+}
+
+#header #title{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width: 100%;
+}
+
+#header #hamberger{
+    position: absolute;
+    top:0%;
+    left:0%;
+    text-align: left;
+}
+
+#main{
+    position: relative;
+    box-sizing: border-box;
+    left: 50%;
+    width: 100%;
+    padding: 0%;
+    transform:translateX(-50%);
+    min-height: 90vh;
+}
+
+
+#footer{
+    margin: 0%;
+    margin-top: auto;
+    position: relative;
+    bottom: 0;
+    left: 0%;
+    width: 100%;
+    height: 5vh;
+    background: linear-gradient(#0263e2, #006fa3);
+    color: #ffffff;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 2vh;
+}
+
+#footer span{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width: 100%;
+}
+
+.code{
+    font-family: 'Roboto Mono';
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    margin: 0%;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #3c3c3c;
+        color: #fff;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #fff;
+        color: #000;
+    }
+}
+
+.main_menu_nodisp{
+    display: none;
+}
+
+.main_menu{
+    position: absolute;
+    background: linear-gradient(#009966, #00573a);
+    color: #fff;
+    height: calc(100vh - 2em);
+    width: calc(70vw - 2em);
+    padding: 1em;
+    z-index: 10;
+}
+
+.menu_closer_nodisp{
+    display: none;
+}
+
+.menu_closer{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    height: 100vh;
+    width: 30vw;
+    left: 70vw;
+    z-index: 10;
+}
+
+#main_menu div{
+    font-family: 'Sawarabi Gothic';
+}
+
+.show_main_menu{
+    animation: show_main_menuAnime 0.3s ease-in forwards;
+}
+@keyframes show_main_menuAnime{
+    0%{
+        visibility: hidden;
+        opacity: 0%;
+    }
+    1%{
+        visibility: visible;
+        opacity: 1%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+.hide_main_menu{
+    animation: hide_main_menuAnime 0.3s ease-in forwards;
+}
+@keyframes hide_main_menuAnime{
+    0%{
+        opacity: 100%;
+    }
+    99%{
+        opacity: 1%;
+    }
+    100%{
+        visibility: hidden;
+        opacity: 0%;
+    }
+}
+
+a{
+    text-decoration: none;
+    color: #37b6f1;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: #37b6f1;
+}
+
+#main_menu a{
+    text-decoration: none;
+    color: #fff;
+}
+
+#main_menu a:hover{
+    text-decoration: underline;
+    color: #fff;
+}
+
+.main_frame{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 1em;
+    width: calc(100vw - 2em);
+    height: calc(90vh - 2em);
+}
+
+.image_text{
+    height: 1rem;
+    width: auto;
+}
