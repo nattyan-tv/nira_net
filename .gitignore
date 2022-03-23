@@ -1,8 +1,0 @@
-# ログイン情報など
-/cgi/discord_auth/auth_data.py
-
-# 開発中のため
-/cgi/*
-/home.html
-/server_status.html
-/ss_selectbox.js

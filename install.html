@@ -7,18 +7,18 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="apple-mobile-web-app-title" content="NIRA Net">
         <link rel="apple-touch-icon" href="https://team-i2021.github.io/nira_bot/images/nira_1.jpg">
-        <!-- <link rel="manifest" href="manifest.json"> -->
+        <link rel="manifest" href="manifest.json">
         <meta name="theme-color" content="#009966">
         <script>
-            // if(window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone){
-            //     location.replace('/index.html', '_blank');
-            // }
-            // if ('serviceWorker' in navigator) {
-            //     navigator.serviceWorker.register('sw.js')
-            //         .then((reg) => {
-            //             console.log('Service worker registered.', reg);
-            //     });
-            // }
+            if(window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone){
+                location.replace('/index.html', '_blank');
+            }
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js')
+                    .then((reg) => {
+                        console.log('Service worker registered.', reg);
+                });
+            }
         </script>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 		<meta content="NIRA Net" property="og:title" />
@@ -43,8 +43,6 @@
     <body>
         <div id="main" style="padding: 1em; font-family: 'Sawarabi Gothic';">
             <h1><img src="/favicon.png" style="width: 2rem;"> NIRA Net</h1>
-            現在鋭意制作中です...nira-netのレポジトリでも見て眺めてください。
-            <!--
             <h1><img src="/favicon.png" style="width: 2rem;"> NIRA Net</h1>
             The powerful web utility application.
             <hr>
@@ -61,7 +59,6 @@
             ページを開き、URLバーの右側にある[アプリの追加]または、メニューから[アプリ]、[NIRA Webのインストール]を押してください。<br>
             インストールされた[NIRA Net]を起動します。<br>
             各名称はブラウザによって異なる場合があります。
-            -->
         </div>
     </body>
 </html>

@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>NIRA Net - Debug</title>
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-title" content="NIRA Web">
+        <link rel="apple-touch-icon" href="https://team-i2021.github.io/nira_bot/images/nira_1.jpg">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<meta content="NIRA Net - Server Status" property="og:title" />
+		<meta content="The utility web application of nira bot." property="og:description" />
+		<meta content="http://nira.f5.si/" property="og:url" />
+		<meta content="https://team-i2021.github.io/nira_bot/images/nira_1.jpg" property="og:image" />
+		<meta content="#00ff00" data-react-helmet="true" name="theme-color" />
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/main.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://taisukef.github.io/marked_md/marked.min.js"></script>
+        <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
+        <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" type="image/png" href="/favicon.png">
+        <link rel="icon" type="image/png" href="/favicon.png">
+
+	</head>
+    <body>
+        <div id="main" style="font-family: 'Sawarabi Gothic'; text-align: center;">
+            <h1>Debug</h1>
+            Websocket port:<input placeholder="ポート番号" style="width: 50vw; height: 3vh;" type="number" id="port" max="65535" min="0"><br>
+            Message:<input placeholder="コマンド" style="width: 80vw; height: 3vh;" type="text" id="message"><br>
+            <button onclick="websocket()">Send message</button><br><br>
+            <textarea placeholder="Waiting a connection..." style="width: 80vw; height: 40vh;" type="text" id="messages" readonly></textarea><br>
+            <hr>
+            Websocket通信を開始するには、DiscordBOTにて、「n!websocket [port]」として送信してください。<br>
+            <hr>
+            <div style="text-align: left;">
+                ・BOTステータス<br>
+                <b>guilds</b>: BOTが所属しているguild数を表示します。<br>
+                <b>users</b>: BOTのuser数を表示します。<br>
+                <b>voice_clients</b>: BOTが参加しているVC数を表示します。<br><br>
+                ・Websocket通信<br>
+                <b>exit</b>: Websocket通信を終了します。再度再開するにはBOTからコマンドを送信する必要があります。<br>
+            </div>
+        </div>
+        <script src="/language.js"></script>
+        <script>
+            function websocket(){
+                var port = document.getElementById("port").value
+                var message = document.getElementById("message").value
+                $.ajax({
+                    type: 'POST',
+                    url: '/cgi/ws_client.py',
+                    async: true,
+                    dataType: 'json',
+                    timeout: 10000,
+                    data: {
+                        port: port,
+                        message: message
+                    },
+                })
+                .done(function(data) {
+                    if (data["CODE"] != 200) {
+                        alert("プログラムでエラーが発生しました。\n" + data["CODE"] + " " + data["TITLE"] + "\n" + data["DESCRIPTION"])
+                    }
+                    else{
+                        var date = new Date()
+                        var old = String($("#messages").val());
+                        $("#messages").val( old + date.toLocaleString() + ">" + data["RECV_MESSAGE"] + "\n");
+                    }
+                })
+                .fail(function(XMLHttpRequest, status, e) {
+                    alert("エラーが発生しました。\n" + e)
+                    console.log(XMLHttpRequest, status, e)
+                })
+            }
+        </script>
+    </body>
+</html>

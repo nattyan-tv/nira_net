@@ -19,12 +19,12 @@
             {
                 location.replace('/install.html');
             }
-            // if ('serviceWorker' in navigator) {
-            //     navigator.serviceWorker.register('sw.js')
-            //         .then((reg) => {
-            //             console.log('Service worker registered.', reg);
-            //     });
-            // }
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js')
+                    .then((reg) => {
+                        console.log('Service worker registered.', reg);
+                });
+            }
         </script>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 		<meta content="NIRA Net" property="og:title" />
