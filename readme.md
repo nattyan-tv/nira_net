@@ -19,3 +19,9 @@ Android 9|Google Chrome
 Android 9|Microsoft Edge
 
 # How does it works?
+考えるな...感じろ...。
+
+# 「故障かな？」と思ったら？
+お客様サポートセンターの代わりにDiscordサーバーを用意していますので、そちらをご確認ください。  
+[にらBOTサーバー](https://discord.gg/awfFpCYTcP)  
+こちらの #お問い合わせ から問い合わせするか、製作者にでもDMしてください。
