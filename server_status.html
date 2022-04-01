@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>NIRA Net - Server Status</title>
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-title" content="NIRA Web">
+        <link rel="apple-touch-icon" href="https://team-i2021.github.io/nira_bot/images/nira_1.jpg">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<meta content="NIRA Net - Server Status" property="og:title" />
+		<meta content="The utility web application of nira bot." property="og:description" />
+		<meta content="http://nira.f5.si/" property="og:url" />
+		<meta content="https://team-i2021.github.io/nira_bot/images/nira_1.jpg" property="og:image" />
+		<meta content="#00ff00" data-react-helmet="true" name="theme-color" />
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/main.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://taisukef.github.io/marked_md/marked.min.js"></script>
+        <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
+        <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" type="image/png" href="/favicon.png">
+        <link rel="icon" type="image/png" href="/favicon.png">
+
+	</head>
+    <body>
+        <div id="main">
+            
+            <!-- Steam Dedicated Server Status Checker Powered by python-a2s -->
+            <div id="ss_check">
+                <h3 style="text-align: center;">Steamサーバーチェック</h3>
+                にらBOTの「n!ss」に相当する機能で、Steamゲームの個人サーバー（非公式サーバー）のステータスをチェックすることが出来ます。<br><br>
+                <div style="text-align: center;">
+                    Server:<select id="ss_list" style="width: 40vw; height: 3vh;" onchange="change_ss_list()">
+                        <option hidden value="select" disabled selected>---Select---</option>
+                    </select>
+                </div>
+                <br>
+                <div style="text-align: center;" id="add_ss_server_div">
+                    <div>アドレスで追加する</div>
+                    <input placeholder="サーバーの名前" style="width: 60vw; height: 3vh;" type="text" id="ss_server_name"><br>
+                    <input placeholder="IPアドレス/ドメイン" style="width: 40vw; height: 3vh;" type="text" id="ss_server_address"><span style="font-size:3vh;">:</span><input placeholder="ポート番号" style="width: 20vw; height: 3vh;" type="number" id="ss_server_port" max="65535" min="0"><br><br>
+                    <button name="add_server_address" onclick="add_ss_server(1)" class="bt" style="width: 40vw; height: 4vh; text-align: center;">アドレスで追加</button>
+                    <br><br>
+                    <div>Discordから追加する</div>
+                    <div><a href="javascript:show_add_server(1)">Discordからの追加方法</a></div>
+                    <button name="add_server_auth" onclick="add_ss_server(2)" class="bt" style="width: 40vw; height: 4vh; text-align: center;">Login with Discord</button>
+                    <br>
+                    <br>
+                </div>
+                <div id="del_ss_server_div" style="text-align: center;">
+                    <button id="del_ss_button" name="del_ss_button" onclick="del_server()" class="bt" style="width: 40vw; height: 4vh; text-align: center;">サーバーを削除</button>
+                    <br>
+                    <br>
+                </div>
+                <div style="text-align: center;">
+                    <button id="del_all_ss_all" onclick="delete_ss_all()" class="bt" style="width: 40vw; height: 4vh; text-align: center;">全データ削除</button>
+                    <button id="check_ss_button" onclick="a2s()" class="bt" style="width: 40vw; height: 4vh; text-align: center;" disabled>ステータスチェック</button>
+                </div>
+            </div>
+            <hr>
+            <br>
+
+            <!-- Minecraft Server Status Checker Powered by python-mcstatus -->
+            <div id="mc_check">
+                <h3 style="text-align: center;">Minecraftサーバーチェック</h3>
+                Minecraftのサーバーのステータスをチェックすることができます。<br>にらBOTで言うところの「n!mc」です。<br><br>
+                <div style="text-align: center;">
+                    Server:<select id="mc_list" style="width: 40vw; height: 3vh;" onchange="change_mc_list()">
+                        <option hidden value="select" disabled selected>---Select---</option>
+                    </select>
+                </div>
+                <br>
+                <div style="text-align: center;" id="add_mc_server_div">
+                    <div>アドレスで追加する</div>
+                    <input placeholder="サーバーの名前" style="width: 60vw; height: 3vh;" type="text" id="mc_server_name"><br>
+                    <input placeholder="IPアドレス/ドメイン" style="width: 40vw; height: 3vh;" type="text" id="mc_server_address"><span style="font-size:3vh;">:</span><input placeholder="ポート番号" style="width: 20vw; height: 3vh;" type="number" id="mc_server_port" max="65535" min="0"><br>
+                    サーバータイプ:<select id="mc_type" style="width: 40vw; height: 3vh;">
+                        <option hidden value="select" disabled selected>サーバー種類</option>
+                        <option value="java">Java Edition</option>
+                        <option value="be">Bedrock Edition</option>
+                    </select><br><br>
+                    <button name="add_server_address" onclick="add_mc_server(1)" class="bt" style="width: 40vw; height: 4vh; text-align: center;">アドレスで追加</button>
+                    <br><br>
+                    <div>Discordから追加する</div>
+                    <div><a href="javascript:show_add_server(2)">Discordからの追加方法</a></div>
+                    <button name="add_server_auth" onclick="add_mc_server(2)" class="bt" style="width: 40vw; height: 4vh; text-align: center;">Login with Discord</button>
+                    <br>
+                    <br>
+                </div>
+                <div id="del_mc_server_div" style="text-align: center;">
+                    <button id="del_mc_button" name="del_mc_button" onclick="del_mc_server()" class="bt" style="width: 40vw; height: 4vh; text-align: center;">サーバーを削除</button>
+                    <br>
+                    <br>
+                </div>
+                <div style="text-align: center;">
+                    <button id="del_all_mc_all" onclick="delete_mc_all()" class="bt" style="width: 40vw; height: 4vh; text-align: center;">全データ削除</button>
+                    <button id="check_mc_button" onclick="mc()" class="bt" style="width: 40vw; height: 4vh; text-align: center;" disabled>ステータスチェック</button>
+                </div>
+            </div>
+            <hr>
+            <br>
+            
+        </div>
+        <script src="/language.js"></script>
+        <script src="/ss_selectbox.js"></script>
+    </body>
+</html>
