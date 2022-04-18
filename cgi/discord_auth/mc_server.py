@@ -107,7 +107,7 @@ def main():
     for i in range(len(guild)):
         if int(guild[i]) not in mc_list_keys:
             continue
-        for i in range(int((len(mc_list[mc_list_keys[key_i]])-1)/2)):
+        for i in range(int((len(mc_list[mc_list_keys[key_i]])-1)/2)+1):
             # {mc_list[mc_list_keys[key_i]][f'{i+1}_ad'][0]}
             # [mc_name]=[java/be]=[address:port]
             url = url + f"{mc_list[mc_list_keys[key_i]][i+1][0]}={mc_list[mc_list_keys[key_i]][i+1][2]}={mc_list[mc_list_keys[key_i]][i+1][1]}?"
