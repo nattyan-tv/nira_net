@@ -206,6 +206,47 @@ function a2s(){
     });
 }
 
+function mc(){
+    var bt = document.getElementById('check_mc_button');
+    bt.disabled = true;
+    bt.textContent = "処理中です...";
+    document.getElementById('mc_list').disabled = true;
+    document.getElementById('del_all_mc_all').disabled = true;
+    document.getElementById('del_mc_button').disabled = true;
+    var ss_list = localStorage.getItem("mc_list").split("?");
+    var index = Number(document.getElementById("mc_list").selectedIndex)-1
+    var address = ss_list[index].split("=")[0].split(":")[0]
+    var port = ss_list[index].split("=")[0].split(":")[1]
+    var type = ss_list[index].split("=")[1]
+    $.ajax({
+        type: 'POST',
+        url: '/cgi/nira_web.py',
+        async: true,
+        dataType: 'html',
+        timeout: 10000,
+        data: {
+            address: address,
+            port: port,
+            type: MINECRAFT,
+            server_type: type
+        },
+    })
+    .done(function(data) {
+        alert(data)
+    })
+    .fail(function(XMLHttpRequest, status, e) {
+        alert("エラーが発生しました。\n" + e)
+    })
+    .always(function() {
+        var bt = document.getElementById('check_mc_button');
+        bt.disabled = false;
+        bt.textContent = "ステータスチェック";
+        document.getElementById('mc_list').disabled = false;
+        document.getElementById('del_all_mc_all').disabled = false;
+        document.getElementById('del_mc_button').disabled = false;
+    });
+}
+
 function del_server(){
     var result = parent.window.confirm("サーバーを削除してもよろしいですか？")
     if (result){
