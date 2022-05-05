@@ -33,12 +33,14 @@ MINECRAFT = 2
 JAVA = 1
 BE = 2
 
+
 if ack == MINECRAFT and "server_type" not in form:
     ack = 0
 
+
 def main():
     if ack == 0:
-        print("Bad Request - 400\n正常なデータが送信されませんでした。")
+        print(f"Bad Request - 400\n正常なデータが送信されませんでした。\nACK:{ack}/{form['server_type'].value}")
     elif ack == STEAM:
         
         adr = form["address"].value
@@ -73,6 +75,7 @@ def main():
                 players.append(f"ユーザー名:{user[i].name}\n時間:{user_time}分{round(user[i].duration%60)}秒")
         if player == 0:
             data["SERVER_PLAYER"] = str(f"0/{info.max_players}人")
+            data["SERVER_PLAYERS"] = "現在オンラインのプレイヤーはいません。"
         else:
             data["SERVER_PLAYER"] = str(f"{player}/{info.max_players}人")
             data["SERVER_PLAYERS"] = str("\n\n".join(players))
@@ -87,7 +90,13 @@ def main():
         return
     elif ack == MINECRAFT:
         adr = f"{form['address'].value}:{form['port'].value}"
-        server_type = int(form["server_type"].value)
+        if form["server_type"].value == "java":
+            server_type = JAVA
+        elif form["server_type"].value == "be":
+            server_type = BE
+        else:
+            print(f"Internal Server Error - 500\nサーバータイプが不正です。\n{form['server_type'].value}")
+            return
         if server_type == JAVA:
             try:
                 server = mc.lookup(adr)
@@ -115,9 +124,35 @@ def main():
 
 {data["SERVER_PLAYERS"]}""")
         elif server_type == BE:
+            try:
+                server = mcb.lookup(adr)
+                status = server.status()
+            except BaseException as err:
+                print(f"Service Unavailable - 503\nMinecraft Bedrockサーバーに接続できませんでした。\n{str(err)}")
+                return
+            ping = int(status.latency)
+            gamemode = status.gamemode
+            players = status.players_online
+            name = status.motd
+            if ping == 0:
+                print(f"""\
+正常に通信できました。
+{name}
+ゲームモード:{gamemode}
+
+{players}人オンライン""")
+            else:
+                print(f"""\
+正常に通信できました。
+{name}
+ゲームモード:{gamemode}
+
+{players}人オンライン
+
+Ping:{ping}ms""")
             return
         else:
-            print("Bad Request - 400\n正常なデータが送信されませんでした。")
+            print(f"Bad Request - 400\n正常なデータが送信されませんでした。\nACK:{ack}")
             return
         return
     return

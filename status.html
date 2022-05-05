@@ -31,7 +31,24 @@
         <div id="main">
             <h1>Status</h1>
             <hr>
-            えっと...どういうコードを書けばにらBOTのステータスが見れるんだろ...(そもそも作る気がない)
+            <table style="border-style: solid;">
+                <tr>
+                    <th>サービス名</th>
+                    <th>状況</th>
+                </tr>
+                <tr>
+                    <td>NIRA Bot</td>
+                    <td id="niraBot">Loading...</td>
+                </tr>
+                <tr>
+                    <td>NIRA Net</td>
+                    <td id="niraNet">Loading...</td>
+                </tr>
+            </table>
         </div>
+        <script src="/service.js"></script>
+        <script>
+            getStatus();
+        </script>
     </body>
 </html>

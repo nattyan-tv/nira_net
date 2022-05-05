@@ -191,10 +191,12 @@ function a2s(){
         },
     })
     .done(function(data) {
-        alert(data)
+        alert(data);
+        console.log(data);
     })
     .fail(function(XMLHttpRequest, status, e) {
         alert("エラーが発生しました。\n" + e)
+        console.log(e);
     })
     .always(function() {
         var bt = document.getElementById('check_ss_button');
@@ -215,8 +217,8 @@ function mc(){
     document.getElementById('del_mc_button').disabled = true;
     var ss_list = localStorage.getItem("mc_list").split("?");
     var index = Number(document.getElementById("mc_list").selectedIndex)-1
-    var address = ss_list[index].split("=")[0].split(":")[0]
-    var port = ss_list[index].split("=")[0].split(":")[1]
+    var address = ss_list[index].split("=")[2].split(":")[0]
+    var port = ss_list[index].split("=")[2].split(":")[1]
     var type = ss_list[index].split("=")[1]
     $.ajax({
         type: 'POST',
@@ -316,7 +318,7 @@ function add_mc_server(type){
     }
     else if(type == 2)
     {
-        location.href = "https://discord.com/api/oauth2/authorize?client_id=944822456470863922&redirect_uri=https%3A%2F%2Fnira.f5.si%2Fcgi%2Fdiscord_auth%2Fmc_server.py&response_type=code&scope=identify%20guilds"
+        window.open("https://discord.com/api/oauth2/authorize?client_id=944822456470863922&redirect_uri=https%3A%2F%2Fnira.f5.si%2Fcgi%2Fdiscord_auth%2Fmc_server.py&response_type=code&scope=identify%20guilds")
     }
 }
 

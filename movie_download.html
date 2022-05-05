@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>NIRA Web - Readme</title>
+		<title>NIRA Net - Movie Download</title>
 
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -9,7 +9,7 @@
         <meta name="apple-mobile-web-app-title" content="NIRA Web">
         <link rel="apple-touch-icon" href="https://team-i2021.github.io/nira_bot/images/nira_1.jpg">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-		<meta content="NIRA Web" property="og:title" />
+		<meta content="NIRA Net - Movie Download" property="og:title" />
 		<meta content="The utility web application of nira bot." property="og:description" />
 		<meta content="http://nira.f5.si/" property="og:url" />
 		<meta content="https://team-i2021.github.io/nira_bot/images/nira_1.jpg" property="og:image" />
@@ -21,20 +21,29 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://taisukef.github.io/marked_md/marked.min.js"></script>
         <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
         <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
         <link rel="apple-touch-icon" type="image/png" href="/favicon.png">
         <link rel="icon" type="image/png" href="/favicon.png">
+
 	</head>
     <body>
+        <div id="main" style="text-align: center;">
+            <h3 style="text-align: center;">Movie Download</h3>
+            <div>YouTube及びニコニコ動画のURLを入力してください。</div>
+            
+            <div id="inputer">
+                <input id="url" type="text" placeholder="YouTube or niconico URL..." style="width: 80%;"><br>
+                <button onclick="start()" id="start" style="width: 20%; height: 5vw;">START</button>
+            </div>
+
+            <div>
+                中身としてはくっそ適当です。PR歓迎～（さぼり定期）
+            </div>
+
         </div>
-        <div id="main">
-            <h1>Readme</h1>
-            <hr>
-            一番見やすいNIRA Botの取扱説明書は、Discordで「n!help」と打つことです。さぁ、気が変わらないうちに早く！<br>
-            <br>
-            ↓一応あります<br>
-            <a href="javascript:location.replace('/help.html')">旧ヘルプ</a>
-        </div>
+        <script src="/language.js"></script>
+        <script src="/mvdl.js"></script>
     </body>
 </html>

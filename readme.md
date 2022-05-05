@@ -8,7 +8,8 @@ The web utility application for [nira-bot](https://github.com/team-i2021/nira_bo
 
 # Support
 動作確認を行ったデバイス/ブラウザの表です。  
-基本的にPWAがインストール出来て、JavaScriptが実行できれば、何とかなると思います。
+基本的にPWAがインストール出来て、JavaScriptが実行できれば、何とかなると思います。  
+最悪、PWAインストールしなくても、なんかエージェントコードとかいじいじすればなんとかなるでしょ。GitHub見てるくらいならそんぐらいできるでしょ。
 
 デバイス|ブラウザ
 ---|---
