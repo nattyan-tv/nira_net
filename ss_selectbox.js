@@ -284,6 +284,32 @@ function delete_ss_all(){
     }
 }
 
+function del_mc_server(){
+    var result = parent.window.confirm("サーバーを削除してもよろしいですか？")
+    if (result){
+        var mc_list = localStorage.getItem("mc_list").split("?");
+        var index = Number(document.getElementById("mc_list").selectedIndex)-1
+        if (mc_list.length == 1)
+        {
+            localStorage.removeItem("mc_list");
+        }
+        else if(index != 0)
+        {
+            var mc = localStorage.getItem("mc_list").replace("?" + mc_list[index], "")
+            console.log(mc)
+            localStorage.setItem("mc_list", mc);
+        }
+        else
+        {
+            var mc = localStorage.getItem("mc_list").replace(mc_list[index] + "?", "")
+            console.log(mc)
+            localStorage.setItem("mc_list", mc);
+        }
+        alert("削除しました。")
+        location.reload(false);
+    }
+}
+
 function delete_mc_all(){
     var result = parent.window.confirm("Minecraftサーバーをすべて削除してもよろしいですか？")
     if (result){
