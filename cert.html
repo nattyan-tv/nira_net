@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>NIRA Net</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+        <script> 
+            var verifyCallback = function(response) {
+                document.getElementById("warning").textContent = '';
+                document.getElementById("send").disabled = false;
+            };
+
+            var expiredCallback = function() {
+                document.getElementById("warning").textContent = '再度認証を行ってください';
+                document.getElementById("send").disabled = true;
+            };
+        </script>
+	</head>
+    <body>
+        <div id="main" style="padding: 1em; font-family: 'Sawarabi Gothic';">
+            <h1>Captcha/認証</h1>
+            <form method="post" action="/cgi/cert/reCaptcha.py">
+                <div class="g-recaptcha" data-sitekey="6LcUSukfAAAAANi0gNWObsPyNJALoMF9ZEkdFbyz" data-callback="verifyCallback" data-expired-callback="expiredCallback"></div>
+                <p id="warning">上のチェックを押してから下のボタンを押してください。</p>
+                <button id="send" type="submit" disabled>認証</button>
+            </form>
+            <h5>Captcha with reCaptcha Powered by Google</h5>
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        </div>
+    </body>
+    <script type="text/javascript">
+        var onloadCallback = function() {
+            console.log("grecaptcha is ready!");
+        };
+    </script>
+</html>
