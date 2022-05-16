@@ -129,6 +129,11 @@ def main():
             data = data + "?{url}"
         """ + """
         }
+
+        if (localStorage.getItem("mc_list") == "")
+        {
+            localStorage.removeItem("mc_list");
+        }
         console.log(data);
         localStorage.setItem("mc_list", data);
         location.replace("/index.html");

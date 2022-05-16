@@ -2,6 +2,11 @@ const parent = window.parent;
 const MINECRAFT = 2;
 const STEAM = 1;
 
+if (localStorage.getItem("mc_list") == "")
+{
+    localStorage.removeItem("mc_list");
+}
+
 if (localStorage.getItem("ss_list") != null)
 {
     var ss_list_dic = {};
@@ -327,7 +332,7 @@ function add_mc_server(type){
             var address = document.getElementById('mc_server_address').value;
             var port = document.getElementById('mc_server_port').value;
             var server_type = document.getElementById('mc_type').value;
-            localStorage.setItem("mc_list",name + "=" + server_type + "=" + address + ":" + port)
+            localStorage.setItem("mc_list",　name + "=" + server_type + "=" + address + ":" + port)
             alert("保存しました。")
             location.reload(false)
         }
@@ -337,6 +342,7 @@ function add_mc_server(type){
             var name = document.getElementById('mc_server_name').value;
             var address = document.getElementById('mc_server_address').value;
             var port = document.getElementById('mc_server_port').value;
+            var server_type = document.getElementById('mc_type').value;
             localStorage.setItem("mc_list", current + "?" + name + "=" + server_type + "=" + address + ":" + port)
             alert("保存しました。")
             location.reload(false)

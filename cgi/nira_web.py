@@ -111,11 +111,13 @@ def main():
             data["SERVER_PING"] = int(status.latency)
             data["SERVER_PLAYERS"] = status.players.online
             data["SERVER_DESCRIPTION"] = status.description
-            if players != 0:
-                data["SERVER_PLAYERS"] = "\n".join([i['name'] for i in status.raw['players']['sample']])
+            if "sample" in status.raw["players"]:
+                if int(status.players.online) != 0:
+                    data["SERVER_PLAYERS"] = "\n".join([i['name'] for i in status.raw['players']['sample']])
+                else:
+                    data["SERVER_PLAYERS"] = ""
             else:
                 data["SERVER_PLAYERS"] = ""
-            print(str(data).replace("'",'"'))
             print(f"""\
 正常に通信できました。
 {status.description}
