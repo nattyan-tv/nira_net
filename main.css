@@ -112,7 +112,7 @@ body{
 }
 
 #main_menu div{
-    font-family: 'Sawarabi Gothic';
+    font-family: 'Sawarabi Gothic', sans-serif;
 }
 
 .show_main_menu{
