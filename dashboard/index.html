@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-title" content="NIRA Web">
+        <link rel="apple-touch-icon" href="https://team-i2021.github.io/nira_bot/images/nira_1.jpg">
+        <link rel="manifest" href="manifest.json">
+        <meta name="theme-color" content="#009966">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+        <title>Dashboard</title>
+        <script src="config.js"></script>
+        <script>
+            if (!localStorage.getItem("access_token") || localStorage.getItem("expires_in") < Date.now() + 86400000) {
+                location.replace(AUTH_URL);
+            }
+        </script>
+        <script src="index.js"></script>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="main_container">
+            <div id="header">
+                <div id="h-username">Loading...</div>
+                <div><button id="logout_button" onclick="logout()">Logout</button></div>
+            </div>
+            <div id="displayable">
+                Script Loading...<br>
+                ※ネットワーク環境によっては、スクリプトの読み込みに時間がかかることがあります。
+            </div>
+        </div>
+    </body>
+</html>

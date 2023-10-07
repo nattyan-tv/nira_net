@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    background: #eeeeee;
+}
+
+#header {
+    background: #b3ecc1;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.guild-container {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 60rem;
+    width: 80%;
+}
+
+.guildinfo {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    max-width: 20%;
+    text-align: center;
+}
+
+#displayable {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.guild-icon {
+    width: 80%;
+    border-radius: 50%;
+    margin: 8px;
+}
+
+.guild-icon:hover {
+    border-radius: 20%;
+}
+
+.guild-icon-fake {
+    width: 80%;
+    border-radius: 50%;
+    margin: 8px;
+    background: #313338;
+    color: #fff;
+    font-size: 64px;
+    text-align: center;
+    position: relative;
+}
+
+.guild-icon-fake-span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.guild-icon-fake:hover {
+    background: #5865f2;
+    border-radius: 20%;
+}
+
+.guild-name {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.util-bar {
+    display: flex;
+    padding: 10px 8px;
+}
+
+.back-button {
+    position: absolute;
+    cursor: pointer;
+    color: #fff;
+    background: #1e61a0;
+    border-radius: 4px;
+    padding: 0 4px;
+    text-align: center;
+}
+
+.guild-name-ub {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.guildconfig-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.config-button {
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.config-button {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 30rem;
+    color: #fff;
+    background: #2698b4;
+    border-radius: 0.5rem;
+    border: #08506d 2px solid;
+    cursor: pointer;
+}
+
+.vc-button {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 30rem;
+    color: #fff;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    padding: 4px 0;
+}
+
+.vcdisable {
+    background: #2e2e2e;
+    border: #1a1a1a 2px solid;
+}
+
+.vcenable {
+    background: #149daf;
+    border: #0f6586 2px solid;
+}

@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>Loading...</title>
+    </head>
+    <body>
+        <script src="config.js"></script>
+        <script>
+            /**
+             * @param {string} param
+             * @return {string|null}
+             */
+            const getParam = (param) => {
+                const search = location.search.slice(1).split('&');
+                for (let i = 0; i < search.length; i++) {
+                    const [key, value] = search[i].split('=');
+                    if (key === param) {
+                        return value;
+                    }
+                }
+                return null;
+            }
+
+            (async () => {
+                if (localStorage.getItem("access_token")) {
+                    // 有効期限が切れていればAUTH_URLにリダイレクトする
+                    if (localStorage.getItem("expires_in") === null || localStorage.getItem("expires_in") < Date.now()) {
+                        location.replace(AUTH_URL);
+                        return;
+                    }
+                    // もし有効期限が残り1日ならば、refresh_tokenを使ってaccess_tokenを更新する
+                    if (localStorage.getItem("expires_in") < Date.now() + 86400000) {
+                        const response = await fetch(`${API_URL}refreshtoken`, {
+                            method: 'POST',
+                            mode: 'cors',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                "refresh_token": localStorage.getItem("refresh_token"),
+                                "redirect_uri": REDIRECT_URI
+                            }),
+                        });
+                        console.log(response);
+                        const json = await response.json();
+                        localStorage.setItem('access_token', json.access_token);
+                        localStorage.setItem('refresh_token', json.refresh_token);
+                        localStorage.setItem('expires_in', Date.now() + 604000000); // 800秒は余裕を持たせるための
+                    }
+                } else {
+                    const code = getParam('code');
+                    if (!code) {
+                        console.warn('codeがありません。不正なアクセスです。');
+                        location.replace(AUTH_URL);
+                        return;
+                    }
+                    // http://localhost:8080/gettokenにJSON形式でPOSTリクエストを送信する
+                    const response = await fetch(`${API_URL}gettoken`, {
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            "auth_code": code,
+                            "redirect_uri": REDIRECT_URI
+                        }),
+                    });
+                    console.log(response);
+                    const json = await response.json();
+                    localStorage.setItem('access_token', json.access_token);
+                    localStorage.setItem('refresh_token', json.refresh_token);
+                    localStorage.setItem('expires_in', Date.now() + 604000000); // 800秒は余裕を持たせるための
+                }
+                location.replace('index.html');
+            })();
+        </script>
+    </body>
+</html>
