@@ -1,0 +1,9 @@
+# ログイン情報など
+/cgi/discord_auth/auth_data.py
+/cgi/cert/auth_data.py
+
+/ws_main.html
+/cgi/ws_client.py
+__pycache__
+/websocket.html
+/.well_known
