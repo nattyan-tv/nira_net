@@ -6,4 +6,4 @@
 /cgi/ws_client.py
 __pycache__
 /websocket.html
-/.well_known
+.well-known
