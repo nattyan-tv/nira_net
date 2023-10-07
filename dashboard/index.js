@@ -77,6 +77,7 @@ const vclimit = async (guild_id, guild_name) => {
         if (!canmanage.can_manage) {
             alert("このサーバーの設定を変更する権限がありません。");
             initPage();
+            return;
         }
     }
 
